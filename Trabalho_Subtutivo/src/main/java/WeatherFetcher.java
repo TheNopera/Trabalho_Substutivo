@@ -44,6 +44,6 @@ public class WeatherFetcher {
 
         long endTime = System.currentTimeMillis();  // Record the end time for performance measurement
         long duration = endTime - startTime;  // Calculate the duration
-        System.out.println("Execution time for 3 threads: " + duration + " ms");  // Print the execution time
+        System.out.println("EXECUTION TIME FOR "+ numberOfThreads +" THREADS: " + duration + " ms");  // Print the execution time
     }
 }
