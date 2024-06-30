@@ -8,6 +8,9 @@ public class WeatherFetcher1 {
     NetworkingService networkingService = new NetworkingService();
 
     public void ProcessData(City[] cities){
+        //Star time
+        long startTime = System.currentTimeMillis();
+
         // iterate over cities
         for (City capital : cities) {
             try {
@@ -18,5 +21,10 @@ public class WeatherFetcher1 {
                 e.printStackTrace();
             }
         }
+
+        //End time
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("EXPERIMENT 1: " + (endTime-startTime) + "ms"); // OVERALL TIME
     }
 }
