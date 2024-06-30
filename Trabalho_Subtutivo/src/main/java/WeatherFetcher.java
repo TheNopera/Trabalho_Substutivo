@@ -1,16 +1,24 @@
-/*This class will be using 3 threads so each thread will be responsible for 9 cities*/
+/*This is the class responsible to execute all the API calls with one thread only*/
+
 
 import java.io.IOException;
 
-public class WeatherFetcher2 {
+public class WeatherFetcher {
+    //Instantiates the networking class
     NetworkingService networkingService = new NetworkingService();
+
+    public WeatherFetcher(int numberOfThreads) {
+        this.numberOfThreads = numberOfThreads;
+    }
+
+    int numberOfThreads;
 
     public void ProcessData(City[] cities) throws InterruptedException {
         long startTime = System.currentTimeMillis();  // Record the start time for performance measurement
 
         // Create an array to hold the threads
-        Thread[] threads = new Thread[3];
-        int citiesPerThread = cities.length / threads.length;  // Calculate the number of cities each thread will handle
+        Thread[] threads = new Thread[numberOfThreads];
+        final int citiesPerThread = cities.length / threads.length;  // Calculate the number of cities each thread will handle
 
         for (int i = 0; i < threads.length; i++) {
             final int index = i;
@@ -19,7 +27,7 @@ public class WeatherFetcher2 {
                     // Each thread processes its assigned subset of cities
                     for (int j = index * citiesPerThread; j < (index + 1) * citiesPerThread; j++) {
                         try {
-                            for(int i = 0; i < 10; i++)networkingService.GetWeatherData(cities[j]);  // Get weather data for the city 10 times
+                            for(int i = 0; i < 10; i++)networkingService.GetWeatherData(CityData.getCities()[j]);  // Get weather data for the city 10 times
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
