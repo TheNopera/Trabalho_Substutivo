@@ -14,7 +14,7 @@
     ```bash
     javac -d bin src/*.java
     ```
-4. Execute o projeto (substitua `MainClass` pelo nome da classe principal):
+4. Execute o projeto:
     ```bash
-    java -cp bin MainClass
+    java -cp bin Main
     ```
