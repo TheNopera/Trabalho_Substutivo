@@ -8,10 +8,12 @@ public class Main {
         WeatherFetcher experiment3 = new WeatherFetcher(9);
         WeatherFetcher experiment4 = new WeatherFetcher(27);
 
-        //RUN EXPERIMENTS
-        experiment1.ProcessData(CityData.getCities());
-        experiment2.ProcessData(CityData.getCities());
-        experiment3.ProcessData(CityData.getCities());
+        /* Uncomment to run different experiments, running all at once will make API
+            return 429 (too many requests)*/
+
         experiment4.ProcessData(CityData.getCities());
+//        experiment2.ProcessData(CityData.getCities());
+//        experiment3.ProcessData(CityData.getCities());
+//        experiment4.ProcessData(CityData.getCities());
     }
 }
